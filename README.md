@@ -1,4 +1,4 @@
-# Agentic AI Tacit Collusion: Experimental Pipeline (2025 models)
+# Emergent Tacit Collusion: Experimental Pipeline (2025 models)
 
 This repository runs repeated pricing games in which large language models (LLMs) and RL algorithms (PPO, tabular Q-learning) set prices for competing firms, and measures how far the prices and profits they reach sit above the competitive outcome. It covers a 36-cell factorial grid, eight policy interventions, and the scripts that turn the run logs into the report's tables and figures.
 
