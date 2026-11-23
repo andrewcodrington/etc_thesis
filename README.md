@@ -82,8 +82,11 @@ These run on the same market for the high- and medium-sensitivity cells with per
 
 ## Repository layout
 
+Every file sits at the repository root. `build_codebase.py` contains all the others, including this README, and writes them next to itself. Running it rewrites them all, so make changes in `build_codebase.py` rather than in the generated files, or the next build will undo them.
+
 | File | Purpose |
 |---|---|
+| `build_codebase.py` | Writes every file below and this README |
 | `run_experiments.py` | Entry point: smoke test, grid, interventions, RL baselines, then panel and report assets |
 | `config.py` | Market parameters, model catalogue, provider assignment |
 | `llm_runner.py` | Model calls for all four providers, retries, rate limits, refusals, run logs, resume |
@@ -97,11 +100,10 @@ These run on the same market for the high- and medium-sensitivity cells with per
 | `export_report_assets.py` | Every report figure and Word-ready table cut |
 | `requirements.txt` | Python dependencies |
 
-These files are written by `build_codebase.py`. Running it again overwrites them, so make changes there if you use it.
-
 ## Setup
 
 ```bash
+python3 build_codebase.py        # writes the pipeline files and this README next to it
 pip install -r requirements.txt
 ```
 
@@ -125,6 +127,8 @@ python3 run_experiments.py --smoke
 This makes one call to each model and then runs a full 30-quarter, 3-firm mixed-model game. Its logs go to `logs/smoke/` and never enter the results.
 
 ## Running
+
+Run every command from the repository root. The scripts create `logs/` and `report_assets/` there.
 
 ```bash
 python3 benchmarks.py                                   # print Table 11, write benchmarks_table11.csv
